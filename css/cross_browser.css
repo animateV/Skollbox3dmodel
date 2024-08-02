@@ -1,0 +1,1337 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
+/* Шрифты -------------------------------------------------------------------------------------------------- */
+@font-face {
+  font-family: "Roboto";
+  src: local("Roboto-Regular"),
+    url("../fonts/Roboto-Regular.woff2") format("woff2"),
+    url("../fonts/Roboto-Regular.woff") format("woff");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Roboto-Bold";
+  src: local("Roboto"),
+    url("../fonts/Roboto-Bold.woff2") format("woff2"),
+    url("../fonts/Roboto-Bold.woff") format("woff");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 700;
+}
+
+
+
+/* Переменные -------------------------------------------------------------------------------------------------- */
+:root {
+  /* ----- Контейнер ----- */
+  --container: 1210px;
+  --container-padding: 50px;
+
+
+
+  /* ----- Шрифты (жирность) ----- */
+  --regular: 400;
+  --bold: 700;
+
+
+
+  /* ----- Цвета ----- */
+  /* ----- Синие оттенки ----- */
+  --blye-light: #0051ff;
+  --blye: #3f2aff;
+  --blye-dark: #2a19bd;
+  --blye-extra-dark: #2e2b44;
+  --blue-black: #212133;
+
+  /* ----- Серые оттенки ----- */
+  --light-grey: #d6d6d6;
+  --grey: #b0b0b0;
+  --grey-dark: #666;
+
+
+
+  /* ----- transition time (:hover, :active) ----- */
+  --time: .3s;
+  --time-average: .6s;
+
+}
+
+
+
+/* Глобальные стили -------------------------------------------------------------------------------------------------- */
+
+/* Плавная проктрутка только там где не отключена анимация в системе */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  min-width: 320px;
+  font-family: "Roboto", sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+}
+
+p {
+  margin-top: 0;
+}
+
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+
+
+/* Стили общего назначения -------------------------------------------------------------------------------------------------- */
+
+/* ----- Скрытие элементов от пользовтеля ----- */
+.visually-hidden {
+  position: absolute;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  width: 1px;
+  height: 1px;
+  white-space: nowrap;
+  -webkit-clip-path: inset(100%);
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+/* ----- Задание flex модели по классу ----- */
+.flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+/* ----- Сброс стилей списка ----- */
+.list-reset {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+/* ----- Сброс стилей у кнопок ----- */
+.button-reset {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+/* ----- Общие стили у кнопок ----- */
+.button-similar {
+  border-radius: 20px;
+  font-weight: var(--bold);
+  color: #fff;
+  background-color: var(--blye);
+  -webkit-transition: background-color var(--time), -webkit-transform var(--time);
+  transition: background-color var(--time), -webkit-transform var(--time);
+  -o-transition: background-color var(--time), transform var(--time);
+  transition: background-color var(--time), transform var(--time);
+  transition: background-color var(--time), transform var(--time), -webkit-transform var(--time);
+}
+
+
+/* ----- Общие стили у ссыылок ----- */
+.semilar-link {
+  display: inline-block;
+  padding: 21px 25px;
+  border-radius: 20px;
+  outline: none;
+  text-align: center;
+  min-width: 202px;
+  font-weight: var(--bold);
+  color: #fff;
+  background-color: #3f2aff;
+  cursor: pointer;
+  -webkit-transition: background-color var(--time), -webkit-transform var(--time);
+  transition: background-color var(--time), -webkit-transform var(--time);
+  -o-transition: background-color var(--time), transform var(--time);
+  transition: background-color var(--time), transform var(--time);
+  transition: background-color var(--time), transform var(--time), -webkit-transform var(--time);
+}
+
+/*----- Эффекты для кнопок и ссылок----- */
+/* focus-visible */
+.button-similar:focus-visible:not(:hover) {
+  outline: 2px solid var(--light-grey);
+  outline-offset: 4px;
+  background-color: var(--blye-light);
+}
+
+.semilar-link:focus-visible:not(:hover) {
+  outline: 2px solid var(--light-grey);
+  outline-offset: 4px;
+  background-color: var(--blye-light);
+}
+
+/* ----- Сбрасываем :hover на мобильных устройствах ----- */
+@media (any-hover: hover) {
+  .button-similar:hover {
+    background-color: var(--blye-light);
+  }
+
+  .semilar-link:hover {
+    background-color: var(--blye-light);
+  }
+}
+
+/* active */
+.button-similar:active {
+  background-color: var(--blye-dark);
+}
+
+.semilar-link:active {
+  background-color: var(--blye-dark);
+}
+
+
+
+/* Шапка страницы -------------------------------------------------------------------------------------------------- */
+.header {
+  padding-top: 27px;
+  padding-bottom: 28px;
+  background-color: var(--blye);
+}
+
+.header__container {
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+/* ----- Логотип в шапке ----- */
+.header__link-logo {
+  outline: none;
+}
+
+/* ----- Эффект при фокусе и наведении на логотипа ----- */
+.header__link-logo:focus-visible:not(:hover) {
+  outline: 2px solid var(--light-grey);
+  outline-offset: 5px;
+}
+
+.header__list {
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-column-gap: 57px;
+  -moz-column-gap: 57px;
+  column-gap: 57px;
+  row-gap: 20px;
+  max-width: 472px;
+}
+
+.header__item {
+  max-width: 100%;
+}
+
+.header-item__link {
+  position: relative;
+  outline: none;
+  font-size: 18px;
+  color: #fff;
+  -webkit-transition: color var(--time), background-color var(--time);
+  -o-transition: color var(--time), background-color var(--time);
+  transition: color var(--time), background-color var(--time);
+}
+
+/* ----- Декоративная полоса для ссылок в навигвции ----- */
+.header-item__link::after {
+  position: absolute;
+  left: 0;
+  top: 25px;
+  content: "";
+  width: 100%;
+  height: 2px;
+  background-color: var(--light-grey);
+  -webkit-transform: scaleX(0);
+  -ms-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: -webkit-transform var(--time);
+  transition: -webkit-transform var(--time);
+  -o-transition: transform var(--time);
+  transition: transform var(--time);
+  transition: transform var(--time), -webkit-transform var(--time);
+}
+
+/* ----- Эффекты для ссылок в навигации ----- */
+.header-item__link:focus-visible:not(:hover) {
+  outline: 2px solid var(--light-grey);
+  outline-offset: 5px;
+  color: var(--light-grey);
+}
+
+/* ----- Сбрасываем :hover на мобильных устройствах ----- */
+@media (any-hover: hover) {
+  .header-item__link:hover {
+    color: var(--light-grey);
+  }
+
+  .header-item__link:hover::after {
+    -webkit-transform: scaleX(1);
+    -ms-transform: scaleX(1);
+    transform: scaleX(1);
+  }
+}
+
+.header-item__link:active::after {
+  background-color: var(--grey);
+}
+
+.header-item__link:active {
+  color: var(--grey);
+}
+
+
+
+/* Секция home -------------------------------------------------------------------------------------------------- */
+.home {
+  background: -o-radial-gradient(67.78% 55.93%, 44.07% 44.07%, rgb(85, 86, 129) 0%, rgb(33, 33, 51) 100%);
+  background: radial-gradient(44.07% 44.07% at 67.78% 55.93%, rgb(85, 86, 129) 0%, rgb(33, 33, 51) 100%);
+}
+
+.home__container {
+  position: relative;
+  z-index: 1;
+  padding-top: 129.2px;
+  padding-bottom: 130px;
+}
+
+.home__title {
+  margin-bottom: 29px;
+  line-height: 100%;
+  letter-spacing: .25px;
+  font-size: 60px;
+  font-weight: var(--bold);
+  color: #fff;
+}
+
+.home-title__deffer {
+  letter-spacing: .9px;
+}
+
+.home__subtitle {
+  margin-bottom: 61px;
+  line-height: 150%;
+  font-size: 18px;
+  color: #fff;
+}
+
+/* ----- Кнопка ----- */
+.home__button {
+  padding: 24px 27px 25px;
+  max-width: 320px;
+  min-width: 270px;
+  outline: none;
+  font-size: 18px;
+}
+
+.home__logo::before {
+  display: block;
+  content: "";
+  padding-top: 96%;
+  background-image: url("../img/home/home_background_633_593.webp");
+  background-repeat: no-repeat;
+  background-position: 2px 14px;
+  background-size: contain;
+}
+
+
+
+/* Секция advantages -------------------------------------------------------------------------------------------------- */
+.advantages {
+  padding-top: 80px;
+  padding-bottom: 76px;
+}
+
+.advantages__wrapper {
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.advantages__logo {
+  padding-top: 16%;
+  background-image: url("../img/advantages/image/vectary_texture_160_142.webp");
+  background-repeat: no-repeat;
+  background-position: 15px 22px;
+  background-size: 160px;
+}
+
+.advantages__title {
+  margin-bottom: 17px;
+  max-width: 380px;
+  letter-spacing: 0.31px;
+  line-height: 100%;
+  font-size: 40px;
+  font-weight: var(--bold);
+  color: var(--blye-extra-dark);
+}
+
+.advantages__subtitle {
+  margin: 0;
+  line-height: 150%;
+  color: #666;
+}
+
+.advantages-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-column-gap: 28px;
+  -moz-column-gap: 28px;
+  column-gap: 28px;
+}
+
+.advantages-item__logo {
+  height: 87px;
+  min-width: 81px;
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 80px;
+}
+
+.advantages-item__logo--eye {
+  background-image: url("../img/advantages/advantages_logo/eye.svg");
+}
+
+.advantages-item__logo--fingers {
+  background-image: url("../img/advantages/advantages_logo/fingers.svg");
+}
+
+.advantages-item__logo--bullhorn {
+  background-image: url("../img/advantages/advantages_logo/bullhorn.svg");
+  background-size: 78px;
+}
+
+.advantages-item__descr {
+  margin: 0;
+  max-width: 240px;
+  line-height: 120%;
+  letter-spacing: .2px;
+  font-weight: 700;
+  color: #666;
+}
+
+
+
+/* Секция teachers -------------------------------------------------------------------------------------------------- */
+.teachers {
+  padding-top: 74px;
+  padding-bottom: 74px;
+  background-color: #212133;
+}
+
+.teachers__title {
+  margin-bottom: 24px;
+  line-height: 100%;
+  letter-spacing: 0.17px;
+  font-size: 40px;
+  font-weight: var(--bold);
+  color: #fff;
+}
+
+.teachers__cards {
+  row-gap: 30px;
+}
+
+.teachers-card__image {
+  display: block;
+  width: 100%;
+}
+
+.teachers-card__title {
+  margin-bottom: 7px;
+  letter-spacing: .2px;
+  line-height: 150%;
+  font-size: 18px;
+  font-weight: var(--bold);
+  color: #fff;
+}
+
+.teachers-card__descr {
+  line-height: 150%;
+  color: #85859b;
+}
+
+.teachers-card__picture-wrapper {
+  margin-bottom: 30px;
+}
+
+.teachers-card__descr {
+  margin: 0;
+}
+
+.obvious-br {
+  display: none;
+}
+
+
+
+/* Секция courses -------------------------------------------------------------------------------------------------- */
+.courses {
+  padding-top: 74px;
+  padding-bottom: 80px;
+}
+
+.courses__title {
+  margin-bottom: 24px;
+  line-height: 100%;
+  letter-spacing: 0.69px;
+  font-size: 40px;
+  font-weight: var(--bold);
+  color: var(--blue-black);
+}
+
+.courses__cards {
+  row-gap: 30px;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+}
+
+.courses__wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  border-radius: 20px;
+  background-color: #edf0f9;
+  min-height: 480px;
+  height: 100%;
+  -webkit-transition: -webkit-transform var(--time-average);
+  transition: -webkit-transform var(--time-average);
+  -o-transition: transform var(--time-average);
+  transition: transform var(--time-average);
+  transition: transform var(--time-average), -webkit-transform var(--time-average);
+}
+
+/* ----- Убираем эффект увеличения блока на мобильных устройствах ----- */
+.courses__picture-wrapper {
+  position: relative;
+}
+
+.courses-card__logo {
+  display: block;
+}
+
+.courses__time {
+  position: absolute;
+  top: 12px;
+  right: 5px;
+  padding-left: 30px;
+  color: #fff;
+  background-image: url("../img/courses/logo/watch.svg");
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 26px 22px;
+}
+
+.courses__content {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: start;
+  row-gap: 15px;
+  padding: 31px 30px 30px 30px;
+}
+
+.courses-card__title {
+  margin-bottom: 7px;
+  max-width: 480px;
+  line-height: 150%;
+  letter-spacing: 0.2px;
+  font-size: 18px;
+  font-weight: var(--bold);
+  color: var(--blue-black);
+}
+
+
+
+/* ----- Сбрвсываем теги br по умолчанию для более удобного использования в будущем ----- */
+.key-br {
+  display: none;
+}
+
+.current-situation-br {
+  display: none;
+}
+
+.significant-br {
+  display: none;
+}
+
+.visualization-br {
+  display: none;
+}
+
+.system-br {
+  display: none;
+}
+
+.casual-br {
+  display: none;
+}
+
+.what-br {
+  display: none;
+}
+
+.what-border-br {
+  display: none;
+}
+
+.courses-card__descr {
+  margin-bottom: 0;
+  max-width: 480px;
+  line-height: 150%;
+  color: var(--grey-dark);
+}
+
+.courses-card__link {
+  max-width: 175px;
+}
+
+
+/* Нижний колонтитул -------------------------------------------------------------------------------------------------- */
+
+/* ----- footer-top ----- */
+.footer-top {
+  padding-top: 31px;
+  padding-bottom: 25px;
+  background-color: var(--blye-extra-dark);
+}
+
+.footer-top__list {
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-column-gap: 33px;
+  -moz-column-gap: 33px;
+  column-gap: 33px;
+  row-gap: 25px;
+}
+
+.footer-top__link-logo {
+  display: inline-block;
+  width: 21px;
+  height: 19px;
+  outline: none;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 21px 19px;
+  -webkit-transition: background-image var(--time), -webkit-transform var(--time);
+  transition: background-image var(--time), -webkit-transform var(--time);
+  -o-transition: background-image var(--time), transform var(--time);
+  transition: background-image var(--time), transform var(--time);
+  transition: background-image var(--time), transform var(--time), -webkit-transform var(--time);
+}
+
+.footer-top__link-logo:focus-visible:not(:hover) {
+  outline: 2px solid var(--light-grey);
+  outline-offset: 3px;
+}
+
+
+
+/* ----- Логотипы :hover, :focus-visible, :active ----- */
+/* ----- Логотип facebook ----- */
+.footer-top__link-logo--fc {
+  background-image: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.402 18V11.034H14.735L15.084 8.326H12.402V6.598C12.402 5.814 12.62 5.279 13.744 5.279H15.178V2.857C14.4838 2.78334 13.7861 2.74762 13.088 2.75C11.021 2.75 9.606 4.012 9.606 6.33V8.326H7.268V11.034H9.606V18H1C0.734784 18 0.48043 17.8946 0.292893 17.7071C0.105357 17.5196 0 17.2652 0 17V1C0 0.734784 0.105357 0.48043 0.292893 0.292893C0.48043 0.105357 0.734784 0 1 0H17C17.2652 0 17.5196 0.105357 17.7071 0.292893C17.8946 0.48043 18 0.734784 18 1V17C18 17.2652 17.8946 17.5196 17.7071 17.7071C17.5196 17.8946 17.2652 18 17 18H12.402Z' fill='white'/%3E%3C/svg%3E%0A");
+}
+
+.footer-top__link-logo--fc:hover {
+  background-image: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 18 18' fill='%23d6d6d6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.402 18V11.034H14.735L15.084 8.326H12.402V6.598C12.402 5.814 12.62 5.279 13.744 5.279H15.178V2.857C14.4838 2.78334 13.7861 2.74762 13.088 2.75C11.021 2.75 9.606 4.012 9.606 6.33V8.326H7.268V11.034H9.606V18H1C0.734784 18 0.48043 17.8946 0.292893 17.7071C0.105357 17.5196 0 17.2652 0 17V1C0 0.734784 0.105357 0.48043 0.292893 0.292893C0.48043 0.105357 0.734784 0 1 0H17C17.2652 0 17.5196 0.105357 17.7071 0.292893C17.8946 0.48043 18 0.734784 18 1V17C18 17.2652 17.8946 17.5196 17.7071 17.7071C17.5196 17.8946 17.2652 18 17 18H12.402Z' fill='%23d6d6d6'/%3E%3C/svg%3E%0A");
+}
+
+.footer-top__link-logo--fc:focus-visible {
+  background-image: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 18 18' fill='%23d6d6d6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.402 18V11.034H14.735L15.084 8.326H12.402V6.598C12.402 5.814 12.62 5.279 13.744 5.279H15.178V2.857C14.4838 2.78334 13.7861 2.74762 13.088 2.75C11.021 2.75 9.606 4.012 9.606 6.33V8.326H7.268V11.034H9.606V18H1C0.734784 18 0.48043 17.8946 0.292893 17.7071C0.105357 17.5196 0 17.2652 0 17V1C0 0.734784 0.105357 0.48043 0.292893 0.292893C0.48043 0.105357 0.734784 0 1 0H17C17.2652 0 17.5196 0.105357 17.7071 0.292893C17.8946 0.48043 18 0.734784 18 1V17C18 17.2652 17.8946 17.5196 17.7071 17.7071C17.5196 17.8946 17.2652 18 17 18H12.402Z' fill='%23d6d6d6'/%3E%3C/svg%3E%0A");
+}
+
+.footer-top__link-logo--fc:active {
+  background-image: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 18 18' fill='%23b0b0b0' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.402 18V11.034H14.735L15.084 8.326H12.402V6.598C12.402 5.814 12.62 5.279 13.744 5.279H15.178V2.857C14.4838 2.78334 13.7861 2.74762 13.088 2.75C11.021 2.75 9.606 4.012 9.606 6.33V8.326H7.268V11.034H9.606V18H1C0.734784 18 0.48043 17.8946 0.292893 17.7071C0.105357 17.5196 0 17.2652 0 17V1C0 0.734784 0.105357 0.48043 0.292893 0.292893C0.48043 0.105357 0.734784 0 1 0H17C17.2652 0 17.5196 0.105357 17.7071 0.292893C17.8946 0.48043 18 0.734784 18 1V17C18 17.2652 17.8946 17.5196 17.7071 17.7071C17.5196 17.8946 17.2652 18 17 18H12.402Z' fill='%23b0b0b0'/%3E%3C/svg%3E%0A");
+}
+
+
+
+/* ----- Логотип twitter ----- */
+.footer-top__link-logo--tw {
+  background-image: url("data:image/svg+xml,%3Csvg width='22' height='18' viewBox='0 0 22 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.1621 2.65593C20.3986 2.99362 19.589 3.2154 18.7601 3.31393C19.6338 2.79136 20.2878 1.96894 20.6001 0.999927C19.7801 1.48793 18.8811 1.82993 17.9441 2.01493C17.3147 1.34151 16.4804 0.89489 15.571 0.744511C14.6616 0.594133 13.728 0.748418 12.9153 1.18338C12.1026 1.61834 11.4564 2.30961 11.0772 3.14972C10.6979 3.98983 10.6068 4.93171 10.8181 5.82893C9.15516 5.74558 7.52838 5.31345 6.04334 4.56059C4.55829 3.80773 3.24818 2.75097 2.19805 1.45893C1.82634 2.09738 1.63101 2.82315 1.63205 3.56193C1.63205 5.01193 2.37005 6.29293 3.49205 7.04293C2.82806 7.02202 2.17869 6.84271 1.59805 6.51993V6.57193C1.59825 7.53763 1.93242 8.47354 2.5439 9.22099C3.15538 9.96843 4.00653 10.4814 4.95305 10.6729C4.33667 10.84 3.69036 10.8646 3.06305 10.7449C3.32992 11.5762 3.85006 12.3031 4.55064 12.824C5.25123 13.3449 6.09718 13.6337 6.97005 13.6499C6.10253 14.3313 5.10923 14.8349 4.04693 15.1321C2.98464 15.4293 1.87418 15.5142 0.779053 15.3819C2.69075 16.6114 4.91615 17.264 7.18905 17.2619C14.8821 17.2619 19.0891 10.8889 19.0891 5.36193C19.0891 5.18193 19.0841 4.99993 19.0761 4.82193C19.8949 4.23009 20.6017 3.49695 21.1631 2.65693L21.1621 2.65593Z' fill='white'/%3E%3C/svg%3E%0A");
+}
+
+.footer-top__link-logo--tw:hover {
+  background-image: url("data:image/svg+xml,%3Csvg width='22' height='18' viewBox='0 0 22 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.1621 2.65593C20.3986 2.99362 19.589 3.2154 18.7601 3.31393C19.6338 2.79136 20.2878 1.96894 20.6001 0.999927C19.7801 1.48793 18.8811 1.82993 17.9441 2.01493C17.3147 1.34151 16.4804 0.89489 15.571 0.744511C14.6616 0.594133 13.728 0.748418 12.9153 1.18338C12.1026 1.61834 11.4564 2.30961 11.0772 3.14972C10.6979 3.98983 10.6068 4.93171 10.8181 5.82893C9.15516 5.74558 7.52838 5.31345 6.04334 4.56059C4.55829 3.80773 3.24818 2.75097 2.19805 1.45893C1.82634 2.09738 1.63101 2.82315 1.63205 3.56193C1.63205 5.01193 2.37005 6.29293 3.49205 7.04293C2.82806 7.02202 2.17869 6.84271 1.59805 6.51993V6.57193C1.59825 7.53763 1.93242 8.47354 2.5439 9.22099C3.15538 9.96843 4.00653 10.4814 4.95305 10.6729C4.33667 10.84 3.69036 10.8646 3.06305 10.7449C3.32992 11.5762 3.85006 12.3031 4.55064 12.824C5.25123 13.3449 6.09718 13.6337 6.97005 13.6499C6.10253 14.3313 5.10923 14.8349 4.04693 15.1321C2.98464 15.4293 1.87418 15.5142 0.779053 15.3819C2.69075 16.6114 4.91615 17.264 7.18905 17.2619C14.8821 17.2619 19.0891 10.8889 19.0891 5.36193C19.0891 5.18193 19.0841 4.99993 19.0761 4.82193C19.8949 4.23009 20.6017 3.49695 21.1631 2.65693L21.1621 2.65593Z' fill='%23d6d6d6'/%3E%3C/svg%3E%0A");
+}
+
+.footer-top__link-logo--tw:focus-visible {
+  background-image: url("data:image/svg+xml,%3Csvg width='22' height='18' viewBox='0 0 22 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.1621 2.65593C20.3986 2.99362 19.589 3.2154 18.7601 3.31393C19.6338 2.79136 20.2878 1.96894 20.6001 0.999927C19.7801 1.48793 18.8811 1.82993 17.9441 2.01493C17.3147 1.34151 16.4804 0.89489 15.571 0.744511C14.6616 0.594133 13.728 0.748418 12.9153 1.18338C12.1026 1.61834 11.4564 2.30961 11.0772 3.14972C10.6979 3.98983 10.6068 4.93171 10.8181 5.82893C9.15516 5.74558 7.52838 5.31345 6.04334 4.56059C4.55829 3.80773 3.24818 2.75097 2.19805 1.45893C1.82634 2.09738 1.63101 2.82315 1.63205 3.56193C1.63205 5.01193 2.37005 6.29293 3.49205 7.04293C2.82806 7.02202 2.17869 6.84271 1.59805 6.51993V6.57193C1.59825 7.53763 1.93242 8.47354 2.5439 9.22099C3.15538 9.96843 4.00653 10.4814 4.95305 10.6729C4.33667 10.84 3.69036 10.8646 3.06305 10.7449C3.32992 11.5762 3.85006 12.3031 4.55064 12.824C5.25123 13.3449 6.09718 13.6337 6.97005 13.6499C6.10253 14.3313 5.10923 14.8349 4.04693 15.1321C2.98464 15.4293 1.87418 15.5142 0.779053 15.3819C2.69075 16.6114 4.91615 17.264 7.18905 17.2619C14.8821 17.2619 19.0891 10.8889 19.0891 5.36193C19.0891 5.18193 19.0841 4.99993 19.0761 4.82193C19.8949 4.23009 20.6017 3.49695 21.1631 2.65693L21.1621 2.65593Z' fill='%23d6d6d6'/%3E%3C/svg%3E%0A");
+}
+
+.footer-top__link-logo--tw:active {
+  background-image: url("data:image/svg+xml,%3Csvg width='22' height='18' viewBox='0 0 22 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.1621 2.65593C20.3986 2.99362 19.589 3.2154 18.7601 3.31393C19.6338 2.79136 20.2878 1.96894 20.6001 0.999927C19.7801 1.48793 18.8811 1.82993 17.9441 2.01493C17.3147 1.34151 16.4804 0.89489 15.571 0.744511C14.6616 0.594133 13.728 0.748418 12.9153 1.18338C12.1026 1.61834 11.4564 2.30961 11.0772 3.14972C10.6979 3.98983 10.6068 4.93171 10.8181 5.82893C9.15516 5.74558 7.52838 5.31345 6.04334 4.56059C4.55829 3.80773 3.24818 2.75097 2.19805 1.45893C1.82634 2.09738 1.63101 2.82315 1.63205 3.56193C1.63205 5.01193 2.37005 6.29293 3.49205 7.04293C2.82806 7.02202 2.17869 6.84271 1.59805 6.51993V6.57193C1.59825 7.53763 1.93242 8.47354 2.5439 9.22099C3.15538 9.96843 4.00653 10.4814 4.95305 10.6729C4.33667 10.84 3.69036 10.8646 3.06305 10.7449C3.32992 11.5762 3.85006 12.3031 4.55064 12.824C5.25123 13.3449 6.09718 13.6337 6.97005 13.6499C6.10253 14.3313 5.10923 14.8349 4.04693 15.1321C2.98464 15.4293 1.87418 15.5142 0.779053 15.3819C2.69075 16.6114 4.91615 17.264 7.18905 17.2619C14.8821 17.2619 19.0891 10.8889 19.0891 5.36193C19.0891 5.18193 19.0841 4.99993 19.0761 4.82193C19.8949 4.23009 20.6017 3.49695 21.1631 2.65693L21.1621 2.65593Z' fill='%23b0b0b0'/%3E%3C/svg%3E%0A");
+}
+
+
+
+/* ----- Логотип instagram ----- */
+.footer-top__link-logo--in {
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 0C12.717 0 13.056 0.00999994 14.122 0.0599999C15.187 0.11 15.912 0.277 16.55 0.525C17.21 0.779 17.766 1.123 18.322 1.678C18.8305 2.1779 19.224 2.78259 19.475 3.45C19.722 4.087 19.89 4.813 19.94 5.878C19.987 6.944 20 7.283 20 10C20 12.717 19.99 13.056 19.94 14.122C19.89 15.187 19.722 15.912 19.475 16.55C19.2247 17.2178 18.8311 17.8226 18.322 18.322C17.822 18.8303 17.2173 19.2238 16.55 19.475C15.913 19.722 15.187 19.89 14.122 19.94C13.056 19.987 12.717 20 10 20C7.283 20 6.944 19.99 5.878 19.94C4.813 19.89 4.088 19.722 3.45 19.475C2.78233 19.2245 2.17753 18.8309 1.678 18.322C1.16941 17.8222 0.775931 17.2175 0.525 16.55C0.277 15.913 0.11 15.187 0.0599999 14.122C0.0129999 13.056 0 12.717 0 10C0 7.283 0.00999994 6.944 0.0599999 5.878C0.11 4.812 0.277 4.088 0.525 3.45C0.775236 2.78218 1.1688 2.17732 1.678 1.678C2.17767 1.16923 2.78243 0.775729 3.45 0.525C4.088 0.277 4.812 0.11 5.878 0.0599999C6.944 0.0129999 7.283 0 10 0ZM10 5C8.67392 5 7.40215 5.52678 6.46447 6.46447C5.52678 7.40215 5 8.67392 5 10C5 11.3261 5.52678 12.5979 6.46447 13.5355C7.40215 14.4732 8.67392 15 10 15C11.3261 15 12.5979 14.4732 13.5355 13.5355C14.4732 12.5979 15 11.3261 15 10C15 8.67392 14.4732 7.40215 13.5355 6.46447C12.5979 5.52678 11.3261 5 10 5ZM16.5 4.75C16.5 4.41848 16.3683 4.10054 16.1339 3.86612C15.8995 3.6317 15.5815 3.5 15.25 3.5C14.9185 3.5 14.6005 3.6317 14.3661 3.86612C14.1317 4.10054 14 4.41848 14 4.75C14 5.08152 14.1317 5.39946 14.3661 5.63388C14.6005 5.8683 14.9185 6 15.25 6C15.5815 6 15.8995 5.8683 16.1339 5.63388C16.3683 5.39946 16.5 5.08152 16.5 4.75ZM10 7C10.7956 7 11.5587 7.31607 12.1213 7.87868C12.6839 8.44129 13 9.20435 13 10C13 10.7956 12.6839 11.5587 12.1213 12.1213C11.5587 12.6839 10.7956 13 10 13C9.20435 13 8.44129 12.6839 7.87868 12.1213C7.31607 11.5587 7 10.7956 7 10C7 9.20435 7.31607 8.44129 7.87868 7.87868C8.44129 7.31607 9.20435 7 10 7Z' fill='white'/%3E%3C/svg%3E%0A");
+}
+
+.footer-top__link-logo--in:hover {
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 0C12.717 0 13.056 0.00999994 14.122 0.0599999C15.187 0.11 15.912 0.277 16.55 0.525C17.21 0.779 17.766 1.123 18.322 1.678C18.8305 2.1779 19.224 2.78259 19.475 3.45C19.722 4.087 19.89 4.813 19.94 5.878C19.987 6.944 20 7.283 20 10C20 12.717 19.99 13.056 19.94 14.122C19.89 15.187 19.722 15.912 19.475 16.55C19.2247 17.2178 18.8311 17.8226 18.322 18.322C17.822 18.8303 17.2173 19.2238 16.55 19.475C15.913 19.722 15.187 19.89 14.122 19.94C13.056 19.987 12.717 20 10 20C7.283 20 6.944 19.99 5.878 19.94C4.813 19.89 4.088 19.722 3.45 19.475C2.78233 19.2245 2.17753 18.8309 1.678 18.322C1.16941 17.8222 0.775931 17.2175 0.525 16.55C0.277 15.913 0.11 15.187 0.0599999 14.122C0.0129999 13.056 0 12.717 0 10C0 7.283 0.00999994 6.944 0.0599999 5.878C0.11 4.812 0.277 4.088 0.525 3.45C0.775236 2.78218 1.1688 2.17732 1.678 1.678C2.17767 1.16923 2.78243 0.775729 3.45 0.525C4.088 0.277 4.812 0.11 5.878 0.0599999C6.944 0.0129999 7.283 0 10 0ZM10 5C8.67392 5 7.40215 5.52678 6.46447 6.46447C5.52678 7.40215 5 8.67392 5 10C5 11.3261 5.52678 12.5979 6.46447 13.5355C7.40215 14.4732 8.67392 15 10 15C11.3261 15 12.5979 14.4732 13.5355 13.5355C14.4732 12.5979 15 11.3261 15 10C15 8.67392 14.4732 7.40215 13.5355 6.46447C12.5979 5.52678 11.3261 5 10 5ZM16.5 4.75C16.5 4.41848 16.3683 4.10054 16.1339 3.86612C15.8995 3.6317 15.5815 3.5 15.25 3.5C14.9185 3.5 14.6005 3.6317 14.3661 3.86612C14.1317 4.10054 14 4.41848 14 4.75C14 5.08152 14.1317 5.39946 14.3661 5.63388C14.6005 5.8683 14.9185 6 15.25 6C15.5815 6 15.8995 5.8683 16.1339 5.63388C16.3683 5.39946 16.5 5.08152 16.5 4.75ZM10 7C10.7956 7 11.5587 7.31607 12.1213 7.87868C12.6839 8.44129 13 9.20435 13 10C13 10.7956 12.6839 11.5587 12.1213 12.1213C11.5587 12.6839 10.7956 13 10 13C9.20435 13 8.44129 12.6839 7.87868 12.1213C7.31607 11.5587 7 10.7956 7 10C7 9.20435 7.31607 8.44129 7.87868 7.87868C8.44129 7.31607 9.20435 7 10 7Z' fill='%23d6d6d6'/%3E%3C/svg%3E%0A");
+}
+
+.footer-top__link-logo--in:focus-visible {
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 0C12.717 0 13.056 0.00999994 14.122 0.0599999C15.187 0.11 15.912 0.277 16.55 0.525C17.21 0.779 17.766 1.123 18.322 1.678C18.8305 2.1779 19.224 2.78259 19.475 3.45C19.722 4.087 19.89 4.813 19.94 5.878C19.987 6.944 20 7.283 20 10C20 12.717 19.99 13.056 19.94 14.122C19.89 15.187 19.722 15.912 19.475 16.55C19.2247 17.2178 18.8311 17.8226 18.322 18.322C17.822 18.8303 17.2173 19.2238 16.55 19.475C15.913 19.722 15.187 19.89 14.122 19.94C13.056 19.987 12.717 20 10 20C7.283 20 6.944 19.99 5.878 19.94C4.813 19.89 4.088 19.722 3.45 19.475C2.78233 19.2245 2.17753 18.8309 1.678 18.322C1.16941 17.8222 0.775931 17.2175 0.525 16.55C0.277 15.913 0.11 15.187 0.0599999 14.122C0.0129999 13.056 0 12.717 0 10C0 7.283 0.00999994 6.944 0.0599999 5.878C0.11 4.812 0.277 4.088 0.525 3.45C0.775236 2.78218 1.1688 2.17732 1.678 1.678C2.17767 1.16923 2.78243 0.775729 3.45 0.525C4.088 0.277 4.812 0.11 5.878 0.0599999C6.944 0.0129999 7.283 0 10 0ZM10 5C8.67392 5 7.40215 5.52678 6.46447 6.46447C5.52678 7.40215 5 8.67392 5 10C5 11.3261 5.52678 12.5979 6.46447 13.5355C7.40215 14.4732 8.67392 15 10 15C11.3261 15 12.5979 14.4732 13.5355 13.5355C14.4732 12.5979 15 11.3261 15 10C15 8.67392 14.4732 7.40215 13.5355 6.46447C12.5979 5.52678 11.3261 5 10 5ZM16.5 4.75C16.5 4.41848 16.3683 4.10054 16.1339 3.86612C15.8995 3.6317 15.5815 3.5 15.25 3.5C14.9185 3.5 14.6005 3.6317 14.3661 3.86612C14.1317 4.10054 14 4.41848 14 4.75C14 5.08152 14.1317 5.39946 14.3661 5.63388C14.6005 5.8683 14.9185 6 15.25 6C15.5815 6 15.8995 5.8683 16.1339 5.63388C16.3683 5.39946 16.5 5.08152 16.5 4.75ZM10 7C10.7956 7 11.5587 7.31607 12.1213 7.87868C12.6839 8.44129 13 9.20435 13 10C13 10.7956 12.6839 11.5587 12.1213 12.1213C11.5587 12.6839 10.7956 13 10 13C9.20435 13 8.44129 12.6839 7.87868 12.1213C7.31607 11.5587 7 10.7956 7 10C7 9.20435 7.31607 8.44129 7.87868 7.87868C8.44129 7.31607 9.20435 7 10 7Z' fill='%23d6d6d6'/%3E%3C/svg%3E%0A");
+}
+
+.footer-top__link-logo--in:active {
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 0C12.717 0 13.056 0.00999994 14.122 0.0599999C15.187 0.11 15.912 0.277 16.55 0.525C17.21 0.779 17.766 1.123 18.322 1.678C18.8305 2.1779 19.224 2.78259 19.475 3.45C19.722 4.087 19.89 4.813 19.94 5.878C19.987 6.944 20 7.283 20 10C20 12.717 19.99 13.056 19.94 14.122C19.89 15.187 19.722 15.912 19.475 16.55C19.2247 17.2178 18.8311 17.8226 18.322 18.322C17.822 18.8303 17.2173 19.2238 16.55 19.475C15.913 19.722 15.187 19.89 14.122 19.94C13.056 19.987 12.717 20 10 20C7.283 20 6.944 19.99 5.878 19.94C4.813 19.89 4.088 19.722 3.45 19.475C2.78233 19.2245 2.17753 18.8309 1.678 18.322C1.16941 17.8222 0.775931 17.2175 0.525 16.55C0.277 15.913 0.11 15.187 0.0599999 14.122C0.0129999 13.056 0 12.717 0 10C0 7.283 0.00999994 6.944 0.0599999 5.878C0.11 4.812 0.277 4.088 0.525 3.45C0.775236 2.78218 1.1688 2.17732 1.678 1.678C2.17767 1.16923 2.78243 0.775729 3.45 0.525C4.088 0.277 4.812 0.11 5.878 0.0599999C6.944 0.0129999 7.283 0 10 0ZM10 5C8.67392 5 7.40215 5.52678 6.46447 6.46447C5.52678 7.40215 5 8.67392 5 10C5 11.3261 5.52678 12.5979 6.46447 13.5355C7.40215 14.4732 8.67392 15 10 15C11.3261 15 12.5979 14.4732 13.5355 13.5355C14.4732 12.5979 15 11.3261 15 10C15 8.67392 14.4732 7.40215 13.5355 6.46447C12.5979 5.52678 11.3261 5 10 5ZM16.5 4.75C16.5 4.41848 16.3683 4.10054 16.1339 3.86612C15.8995 3.6317 15.5815 3.5 15.25 3.5C14.9185 3.5 14.6005 3.6317 14.3661 3.86612C14.1317 4.10054 14 4.41848 14 4.75C14 5.08152 14.1317 5.39946 14.3661 5.63388C14.6005 5.8683 14.9185 6 15.25 6C15.5815 6 15.8995 5.8683 16.1339 5.63388C16.3683 5.39946 16.5 5.08152 16.5 4.75ZM10 7C10.7956 7 11.5587 7.31607 12.1213 7.87868C12.6839 8.44129 13 9.20435 13 10C13 10.7956 12.6839 11.5587 12.1213 12.1213C11.5587 12.6839 10.7956 13 10 13C9.20435 13 8.44129 12.6839 7.87868 12.1213C7.31607 11.5587 7 10.7956 7 10C7 9.20435 7.31607 8.44129 7.87868 7.87868C8.44129 7.31607 9.20435 7 10 7Z' fill='%23b0b0b0'/%3E%3C/svg%3E%0A");
+}
+
+
+
+/* ----- Логотип youtube ----- */
+.footer-top__link-logo--youtube {
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='16' viewBox='0 0 20 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M19.543 2.498C20 4.28 20 8 20 8C20 8 20 11.72 19.543 13.502C19.289 14.487 18.546 15.262 17.605 15.524C15.896 16 10 16 10 16C10 16 4.107 16 2.395 15.524C1.45 15.258 0.708 14.484 0.457 13.502C2.98023e-08 11.72 0 8 0 8C0 8 2.98023e-08 4.28 0.457 2.498C0.711 1.513 1.454 0.738 2.395 0.476C4.107 -1.78814e-07 10 0 10 0C10 0 15.896 -1.78814e-07 17.605 0.476C18.55 0.742 19.292 1.516 19.543 2.498ZM8 11.5L14 8L8 4.5V11.5Z' fill='white'/%3E%3C/svg%3E%0A");
+}
+
+.footer-top__link-logo--youtube:hover {
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='16' viewBox='0 0 20 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M19.543 2.498C20 4.28 20 8 20 8C20 8 20 11.72 19.543 13.502C19.289 14.487 18.546 15.262 17.605 15.524C15.896 16 10 16 10 16C10 16 4.107 16 2.395 15.524C1.45 15.258 0.708 14.484 0.457 13.502C2.98023e-08 11.72 0 8 0 8C0 8 2.98023e-08 4.28 0.457 2.498C0.711 1.513 1.454 0.738 2.395 0.476C4.107 -1.78814e-07 10 0 10 0C10 0 15.896 -1.78814e-07 17.605 0.476C18.55 0.742 19.292 1.516 19.543 2.498ZM8 11.5L14 8L8 4.5V11.5Z' fill='%23d6d6d6'/%3E%3C/svg%3E%0A");
+}
+
+.footer-top__link-logo--youtube:focus-visible {
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='16' viewBox='0 0 20 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M19.543 2.498C20 4.28 20 8 20 8C20 8 20 11.72 19.543 13.502C19.289 14.487 18.546 15.262 17.605 15.524C15.896 16 10 16 10 16C10 16 4.107 16 2.395 15.524C1.45 15.258 0.708 14.484 0.457 13.502C2.98023e-08 11.72 0 8 0 8C0 8 2.98023e-08 4.28 0.457 2.498C0.711 1.513 1.454 0.738 2.395 0.476C4.107 -1.78814e-07 10 0 10 0C10 0 15.896 -1.78814e-07 17.605 0.476C18.55 0.742 19.292 1.516 19.543 2.498ZM8 11.5L14 8L8 4.5V11.5Z' fill='%23d6d6d6'/%3E%3C/svg%3E%0A");
+}
+
+.footer-top__link-logo--youtube:active {
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='16' viewBox='0 0 20 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M19.543 2.498C20 4.28 20 8 20 8C20 8 20 11.72 19.543 13.502C19.289 14.487 18.546 15.262 17.605 15.524C15.896 16 10 16 10 16C10 16 4.107 16 2.395 15.524C1.45 15.258 0.708 14.484 0.457 13.502C2.98023e-08 11.72 0 8 0 8C0 8 2.98023e-08 4.28 0.457 2.498C0.711 1.513 1.454 0.738 2.395 0.476C4.107 -1.78814e-07 10 0 10 0C10 0 15.896 -1.78814e-07 17.605 0.476C18.55 0.742 19.292 1.516 19.543 2.498ZM8 11.5L14 8L8 4.5V11.5Z' fill='%23b0b0b0'/%3E%3C/svg%3E%0A");
+}
+
+
+
+
+
+/* ----- footer-copyright ----- */
+.footer__author {
+  display: block;
+  text-align: center;
+  padding-top: 3px;
+  color: var(--blye-extra-dark);
+}
+
+.footer-copyright__logo {
+  display: inline-block;
+  width: 11px;
+  height: 10px;
+  background-image: url("../img/footer/copyright/copyright.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 10px 15px;
+}
+
+
+
+
+/* Адаптив для страницы на брекпоинте 992px и меньше -------------------------------------------------------------------------------------------------- */
+@media (max-width: 1200px) {
+
+  /* ----- Гланый контейнер страницы ----- */
+  .simple-container {
+    --container-padding: 39px;
+  }
+
+
+
+  /* ----- header ----- */
+  .header {
+    padding-top: 29px;
+    padding-bottom: 26px;
+  }
+
+
+
+  /* ----- home ----- */
+  .home {
+    padding-bottom: 5px;
+  }
+
+  .home__logo::before {
+    background-image: url("../img/home/home_background_633_593.webp");
+    background-size: contain;
+  }
+
+  .home__title {
+    margin-bottom: 16px;
+    font-size: 50px;
+  }
+
+  .home__subtitle {
+    margin-bottom: 62px;
+    max-width: 345px;
+  }
+
+
+
+  /* ----- Секция advantages ----- */
+  .advantages__logo {
+    background-position: 0 9px;
+  }
+
+  .advantages-item__logo {
+    margin-bottom: 12px;
+  }
+
+  .advantages-item__descr {
+    max-width: 100%;
+  }
+
+  /* ----- Секция teachers ----- */
+
+
+
+}
+
+
+
+/* Адаптив для страницы на брекпоинте 992px и меньше -------------------------------------------------------------------------------------------------- */
+@media (max-width: 992px) {
+
+  /* ----- Шапка страницы ----- */
+  .header {
+    padding-bottom: 26px;
+  }
+
+  .header-item__link::after {
+    width: 0;
+    height: 0;
+    position: static;
+  }
+
+
+  /* ----- Секция home ----- */
+  .home {
+    padding-top: 129.2px;
+    padding-bottom: 135px;
+  }
+
+  .home__container {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .home__logo::before {
+    padding-top: 107%;
+    background-image: url("../img/home/home_bg_330_351.webp");
+    background-position: 0 -13px;
+    background-size: contain;
+  }
+
+  .home__subtitle {
+    margin-bottom: 63px;
+  }
+
+  .home__button {
+    padding-bottom: 24px;
+
+  }
+
+
+  /* ----- Секция advantages ----- */
+  .advantages__logo {
+    padding-top: 23%;
+    background-image: url("../img/advantages/image/vectary_texture_160_142.webp");
+    background-position: 0 20px;
+    background-size: 160px;
+  }
+
+  .advantages__wrapper {
+    margin-bottom: 19px;
+  }
+
+  .advantages-item {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: start;
+  }
+
+  .advantages-item__logo {
+    width: 80px;
+    margin-bottom: 8px;
+  }
+
+  .advantages__title {
+    letter-spacing: .35px;
+  }
+
+
+
+  /* ----- Секция courses -----  */
+  .courses {
+    padding-bottom: 79px;
+  }
+
+  .courses__time {
+    top: 14px;
+    right: 10px;
+    padding-left: 31px;
+    background-size: 28px 22px;
+  }
+
+  .courses__content {
+    padding-right: 24px;
+  }
+
+  .courses-card__content-box {
+    margin-bottom: 14px;
+  }
+
+  .semilar-link {
+    min-width: 195px;
+  }
+
+
+
+  /* ----- Нижний колонтитул ----- */
+  .footer-top {
+    padding-bottom: 26px;
+  }
+
+  .footer__author {
+    padding-top: 4px;
+  }
+}
+
+
+
+/* Адаптив для страницы на брекпоинте 767px и меньше -------------------------------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+
+  /* ----- Шапка страницы ----- */
+  .header {
+    padding-top: 27px;
+    padding-bottom: 28px;
+  }
+
+  .header__container {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+  }
+
+
+
+  /* ----- Секция home ----- */
+  .home {
+    position: relative;
+    padding-top: 130px;
+  }
+
+  .home__title {
+    letter-spacing: .1px;
+  }
+
+  .home__subtitle {
+    margin-bottom: 62px;
+  }
+
+
+
+  /* ----- Секция advantages ----- */
+  .advantages {
+    padding-bottom: 75px;
+  }
+
+  .advantages__logo {
+    padding-top: 33%;
+    background-image: url("../img/advantages/image/vectary_texture_211_187.webp");
+    background-position: 15px 25px;
+    background-size: 88%;
+  }
+
+
+
+  /* ----- Секция teachers ----- */
+  .teachers__cards {
+    row-gap: 24px;
+  }
+
+
+
+  /* ----- Удалаяем тег br для отмены сброса слов ----- */
+  .degree-br {
+    display: none;
+  }
+
+}
+
+
+
+/* Адаптив для страницы на брекпоинте 744px и меньше -------------------------------------------------------------------------------------------------- */
+@media (max-width: 767px) {
+
+  /* ----- Шапка страницы ----- */
+  .header {
+    padding-top: 30px;
+    padding-bottom: 29px;
+  }
+
+  .header__link-logo {
+    margin-bottom: 28px;
+  }
+
+  .header__navigation {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .header__list {
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 471px;
+  }
+
+  .header__container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+
+
+
+  /* ----- Секция home ----- */
+  .home {
+    padding-top: 77px;
+  }
+
+  .home__subtitle {
+    margin-bottom: 62px;
+  }
+
+  .home__logo::before {
+    background-image: none;
+    padding: 0;
+    height: 0;
+    width: 0;
+  }
+
+
+
+  /* ----- Секция advantages ----- */
+  .advantages {
+    padding-bottom: 55px;
+  }
+
+  .advantages__title {
+    margin-bottom: 18px;
+    letter-spacing: .49px;
+  }
+
+  .advantages__wrapper {
+    margin-bottom: 20px;
+  }
+
+  .advantages__list {
+    row-gap: 30px;
+  }
+
+  .advantages__logo {
+    padding-top: 27%;
+    background-image: url("../img/advantages/image/vectary_texture_150_134.webp");
+    background-position: 15px 0;
+    background-size: contain;
+  }
+
+  .advantages-item__logo {
+    margin-bottom: 6px;
+  }
+
+
+
+  /* ----- Секция courses ----- */
+  .courses__title {
+    /* margin-bottom: 24px; */
+    letter-spacing: 0.99px;
+  }
+
+  .courses__time {
+    top: 13px;
+  }
+
+  .courses__content {
+    padding-right: 22px;
+  }
+
+  .courses-card__logo {
+    border-radius: 20px 20px 0 0;
+    width: 100%;
+    height: 180px;
+  }
+
+  .courses-card__content-box {
+    margin-bottom: 16px;
+  }
+
+  .courses-card__title {
+    margin-bottom: 10px;
+    line-height: 130%;
+  }
+
+
+
+  /* ----- Активируем теги br для переноса слов в нужном нам месте ----- */
+  .current-situation-br {
+    display: block;
+  }
+
+  .significant-br {
+    display: block;
+  }
+
+  .casual-br {
+    display: block;
+  }
+
+  .semilar-link {
+    min-width: 180px;
+  }
+
+}
+
+
+
+
+/* Адаптив для страницы на брекпоинте 428px и меньше -------------------------------------------------------------------------------------------------- */
+@media (max-width: 414px) {
+
+  /* ----- Главный контейнер страницы ----- */
+  .simple-container {
+    --container-padding: 15px;
+  }
+
+
+
+  /* ----- Секция header ----- */
+  .header {
+    padding-top: 25px;
+    padding-bottom: 25px;
+  }
+
+  .header__link-logo {
+    margin-bottom: 22px;
+  }
+
+
+
+  /*----- Секция home ----- */
+  .home {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  .home__title {
+    margin-bottom: 5px;
+    font-size: 30px;
+  }
+
+  .home__subtitle {
+    margin-bottom: 45px;
+    line-height: 130%;
+    font-size: 16px;
+  }
+
+  .home__button {
+    padding-top: 22px;
+    padding-bottom: 19px;
+    min-width: 213px;
+    max-width: 250px;
+    font-size: 16px;
+  }
+
+
+
+  /* ----- Секция advantages ----- */
+  .advantages {
+    padding-top: 50px;
+    padding-bottom: 49px;
+  }
+
+  .advantages__title {
+    margin-bottom: 2px;
+    font-size: 20px;
+    line-height: 130%;
+  }
+
+  /* ----- Удаляем тег br для отмены переноса слов ----- */
+  .will-be-br {
+    display: none;
+  }
+
+  .advantages__logo {
+    display: none;
+  }
+
+  .advantages__wrapper {
+    margin-bottom: 24px;
+  }
+
+  .advantages-item {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: start;
+    max-width: 100%;
+    min-width: 100%;
+  }
+
+  .advantages-item__logo {
+    margin: 0;
+    height: 80px;
+  }
+
+
+
+  /* ----- Секция teachers ----- */
+  .teachers {
+    padding-top: 47px;
+    padding-bottom: 48px;
+  }
+
+  .teachers__title {
+    margin-bottom: 27px;
+    letter-spacing: 0.1px;
+    font-size: 20px;
+  }
+
+  .teachers__card {
+    min-width: 100%;
+  }
+
+  .obvious-br {
+    display: block;
+  }
+
+
+
+  /* ----- Секция courses ----- */
+  .courses {
+    padding-top: 46px;
+    padding-bottom: 50px;
+  }
+
+  .courses__title {
+    margin-bottom: 27px;
+    font-size: 20px;
+  }
+
+  .courses__wrapper {
+    min-height: 653px;
+  }
+
+  .courses-card__content-box {
+    margin-bottom: 20px;
+  }
+
+
+
+  /* ----- Активируем теги br для переноса слов в нужном нам месте ----- */
+  .system-br {
+    display: block
+  }
+
+  .visualization-br {
+    display: block;
+  }
+
+  .key-br {
+    display: block;
+  }
+
+  .casual-br {
+    display: none;
+  }
+
+  .what-br {
+    display: block;
+  }
+
+  .what-border-br {
+    display: block;
+  }
+
+  .semilar-link {
+    min-width: 195px;
+  }
+
+
+
+  /* Нижний колонтитул */
+  .footer-top {
+    padding-bottom: 25px;
+  }
+
+}
